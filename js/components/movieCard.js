@@ -3,6 +3,7 @@ import { truncateText } from "../helpers/truncateText.js";
 import { addEventListenersToCard } from "../helpers/eventHandlers.js";
 import { getVoteColor } from "../helpers/getVoteColor.js";
 import { createErrorComponent } from "./createErrorComponent.js";
+import { MOVIE_POSTER_URL } from "../../constants.js";
 
 async function createMovieCard(movie, displayInfo = true) {
   let movieDetails;
@@ -16,32 +17,41 @@ async function createMovieCard(movie, displayInfo = true) {
         document.body.removeChild(errorComponent);
       }
     }, 4000);
-    return; // exit the function or provide some alternative flow here
+    return;
   }
+
   let movieCard = document.createElement("div");
   movieCard.className = "movie-card";
   const genreNames = movieDetails.genres.map((genre) => genre.name).join(", ");
 
+  let imageContainer = document.createElement("div");
+  imageContainer.style.width = "100%";
+  imageContainer.style.height = displayInfo ? "375px" : "150px";
+  imageContainer.style.backgroundColor = "black";
+  imageContainer.className = "image-container";
+
   let movieImage = document.createElement("img");
-  movieImage.src = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : "assets/images/img_not_found2.png";
   movieImage.alt = movie.title;
+  movieImage.style.display = "none";
 
-  let imageContainer = document.createElement("div"); // Create a container for the image
-  imageContainer.appendChild(movieImage); // Append the image to its container
-  imageContainer.className = "image-container"; // Add a class to the container for easier targeting
+  let actualImage = new Image();
+  actualImage.src = movie.poster_path
+    ? `${MOVIE_POSTER_URL}${movie.poster_path}`
+    : "assets/images/img_not_found2.png";
+  actualImage.onload = function () {
+    movieImage.src = this.src;
+    movieImage.style.display = "block";
+  };
 
-  // Create a box for vote_average
+  imageContainer.appendChild(movieImage);
+
   let ctaDetails = document.createElement("div");
   let voteBox = document.createElement("div");
-  voteBox.className = "vote-box"; // Add class for styling
-  voteBox.style.backgroundColor = getVoteColor(movie.vote_average); // Set the background color based on vote_average
-  let voteAverage = parseFloat(movie.vote_average).toFixed(1); // Convert vote_average to a number and round it to one decimal place
-  voteBox.textContent = voteAverage; // Set the text of the box
+  voteBox.className = "vote-box";
+  voteBox.style.backgroundColor = getVoteColor(movie.vote_average);
+  let voteAverage = parseFloat(movie.vote_average).toFixed(1);
+  voteBox.textContent = voteAverage;
   ctaDetails.appendChild(voteBox);
-
-  // Use DOM manipulation instead of innerHTML to build the card structure
 
   ctaDetails.className = "cta-details";
   if (!displayInfo) {
@@ -49,31 +59,32 @@ async function createMovieCard(movie, displayInfo = true) {
   }
   ctaDetails.appendChild(imageContainer);
 
-  let movieInfo = document.createElement("div");
-  movieInfo.className = "movie-info";
-
-  let date = new Date(movie.release_date);
-  let formattedDate = `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()}`;
-
   if (displayInfo) {
+    let movieInfo = document.createElement("div");
+    movieInfo.className = "movie-info";
+
+    let date = new Date(movie.release_date);
+    let formattedDate = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
+
     movieInfo.innerHTML = `
       <h2>${truncateText(movie.title, 24)}</h2>
       <p>Release date <span class="bold"> ${formattedDate} </span></p>
       <p>Genre(s) <span class="bold">${truncateText(genreNames, 20)}</span></p>
       <p>${truncateText(movie.overview, 80)}</p>
     `;
+
+    ctaDetails.appendChild(movieInfo);
   }
 
-  ctaDetails.appendChild(movieInfo);
   movieCard.appendChild(ctaDetails);
 
-  // Store the movie data on the card
   movieCard.dataset.movie = JSON.stringify(movie);
 
   return movieCard;
 }
+
 async function createAndSetUpCard(movie, smallCard = false, noHover = false) {
   const card = await createMovieCard(movie);
 

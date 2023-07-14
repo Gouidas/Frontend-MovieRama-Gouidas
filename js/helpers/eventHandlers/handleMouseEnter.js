@@ -1,5 +1,4 @@
-import { fetchAndCacheMovieTrailer } from "../../api/index.js";
-import { createVideoPlayer } from "../videoPlayer.js";
+import { fetchAndDisplayTrailer } from "../fetchHandlers/fetchAndDisplayTrailer.js"; // import the function
 
 export default function handleMouseEnter(
   ctaDetails,
@@ -10,20 +9,10 @@ export default function handleMouseEnter(
 ) {
   ctaDetails.addEventListener("mouseenter", () => {
     hoverTimeout.value = setTimeout(async () => {
-      let trailerUrl;
       try {
-        trailerUrl = await fetchAndCacheMovieTrailer(movie.id);
+        await fetchAndDisplayTrailer(movie.id, imageContainer, movieImage);
       } catch (error) {
-        throw new Error("Failed to fetch and cache movie trailer");
-      }
-      if (trailerUrl) {
-        let videoPlayer = createVideoPlayer(
-          trailerUrl,
-          movieImage.offsetWidth,
-          movieImage.offsetHeight,
-          movie.poster_path
-        );
-        imageContainer.replaceChild(videoPlayer, movieImage);
+        throw new Error("Failed to fetch and display movie trailer");
       }
     }, 600);
   });

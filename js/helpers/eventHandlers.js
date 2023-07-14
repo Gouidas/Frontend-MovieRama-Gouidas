@@ -1,14 +1,6 @@
-import {
-  fetchMovieDetails,
-  fetchAndCacheMovieTrailer,
-  fetchActors,
-} from "../api/index.js";
-import { createMovieDetailBox } from "../components/movieDetailBox.js";
-import { createVideoPlayer } from "./videoPlayer.js";
 import { createErrorComponent } from "../components/createErrorComponent.js";
 import handleMouseLeave from "./eventHandlers/handleMouseLeave.js";
 import handleClickOnCard from "./eventHandlers/handleClickOnCard.js";
-import handleClickOnSimilarMovie from "./eventHandlers/handleClickOnSimilarMovie.js";
 import handleMouseEnter from "./eventHandlers/handleMouseEnter.js";
 
 async function addEventListenersToCard(card, movie) {

@@ -1,6 +1,7 @@
 // components/SortSelector.js
 
 import { sortMovies } from "../helpers/sortMovies.js";
+import { SORT_PARAM_KEYS, SORT_PARAM_DISPLAY_NAMES } from "../../constants.js";
 
 const sortSelectorContainer = document.getElementById(
   "sort-selector-container"
@@ -12,22 +13,13 @@ if (!sortSelectorContainer) {
   console.log("Found sort selector container", sortSelectorContainer);
 }
 
-// Define the sorting parameters
-const sortParamKeys = ["title", "release_date", "vote_average", "popularity"];
-const sortParamDisplayNames = [
-  "Title",
-  "Release Date",
-  "Average Vote",
-  "Popularity",
-];
-
 // Create the HTML for the dropdown selector
 let sortSelector = document.createElement("select");
 sortSelector.id = "sortSelector"; // Assign an id to the sortSelector element
-sortParamKeys.forEach((sortParam, index) => {
+SORT_PARAM_KEYS.forEach((sortParam, index) => {
   const option = document.createElement("option");
   option.value = sortParam;
-  option.textContent = sortParamDisplayNames[index]; // use the display name instead of the sort parameter
+  option.textContent = SORT_PARAM_DISPLAY_NAMES[index]; // use the display name instead of the sort parameter
   sortSelector.appendChild(option);
 });
 

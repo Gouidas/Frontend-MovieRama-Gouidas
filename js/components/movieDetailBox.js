@@ -1,13 +1,5 @@
-function closeMovieDetails() {
-  const detailBox = document.getElementById("movie-detail-box");
-  detailBox.style.display = "none";
-  detailBox.classList.remove("show");
-
-  const backdrop = document.getElementById("backdrop");
-  backdrop.style.display = "none";
-
-  document.body.classList.remove("no-scroll");
-}
+import { closeMovieDetails } from "../helpers/eventHandlers/handleCloseMovieDetails.js";
+import { getVoteColor } from "../helpers/getVoteColor.js";
 
 export function createMovieDetailBox(movieDetails) {
   const detailBox = document.getElementById("movie-detail-box");
@@ -22,6 +14,7 @@ export function createMovieDetailBox(movieDetails) {
     : "No data available";
 
   const voteAverage = movieDetails.vote_average || "No data available";
+  let voteColor = getVoteColor(parseFloat(voteAverage).toFixed(1));
   const overview = movieDetails.overview || "No data available";
   detailBox.innerHTML = `
     <div id="backdrop">
@@ -34,7 +27,9 @@ export function createMovieDetailBox(movieDetails) {
           <div class="detail-text">
             <p>Release year: ${releaseYear}</p>
             <p>Genres: ${genreNames}</p>
-            <p>Vote average: ${voteAverage}</p>
+            <p>Vote average: <span class="vote-box" style="background-color:${voteColor}">${parseFloat(
+    voteAverage
+  ).toFixed(1)}</span></p>
             <p>${overview}</p>
           </div>
           <div class="detail-trailer">

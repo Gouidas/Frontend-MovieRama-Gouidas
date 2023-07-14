@@ -21,7 +21,7 @@ p {
 }
 
 main {
-  padding: 100px;
+  padding: 100px 20px 20px 20px;
 }
 
 .no-scroll {
