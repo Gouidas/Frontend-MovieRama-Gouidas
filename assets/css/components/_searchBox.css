@@ -4,3 +4,9 @@
 .no-movies{
   color: var(--text-color);
 }
+
+@media screen and (max-width: 370px) {
+  #search {
+    max-width: 130px;
+  }
+}
