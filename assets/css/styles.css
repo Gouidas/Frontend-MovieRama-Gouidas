@@ -1,0 +1,8 @@
+@import 'common/_generic.css';
+@import 'common/_reset.css';
+@import 'common/_variables.css';
+@import 'components/_header.css';
+@import 'components/_searchBox.css';
+@import 'components/_movieCard.css';
+@import 'components/_movieDetailedBox.css';
+@import 'components/_loadingScreen.css';

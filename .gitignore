@@ -1,0 +1,29 @@
+# Dependency directories
+/node_modules
+/.pnp
+.pnp.js
+
+# Production build directory
+/dist
+/build
+
+# Log files
+/logs
+*.log
+
+# Environment variables
+.env
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Mac OS
+.DS_Store
+
+# Editor backup files
+*~
+*.swp
+*.bak

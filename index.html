@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MovieRama</title>
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header id="header-container"></header>
+        <main>
+            <div id="search-container"></div>
+            <div id="movie-list-container" class="movie-list-container"></div>
+            <div id="movie-details-container"></div>
+            <div id="movie-detail-box" class="flex-container_center"></div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/dotenv@10.0.0/dist/browser.js"></script>
+        <script type="module" src="js/api/index.js"></script>
+        <script type="module" src="js/components/header.js"></script>
+        <script type="module" src="js/components/searchBox.js"></script>
+        <script type="module" src="js/components/movieCard.js"></script>
+        <script type="module" src="js/components/sortSelector.js"></script>
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+#movie-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+#similar-movies-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+#similar-movies-section .vote-box{
+  color: var(--background-color);
+}
+
+.movie-card {
+  width: 100%;
+  max-width: 250px;
+  margin: auto;
+  border-radius: var(--border-radius);
+}
+
+.movie-card .movie-info {
+  padding: 10px;
+  min-height: 181px;
+  color: var(--text-color);
+  /* background-color: var(--background-secondary-color); */
+}
+
+.movie-info p {
+  color: var(--secondary-color);
+}
+
+.movie-card img {
+  width: 100%;
+}
+
+.cta-details {
+  cursor: pointer;
+  position: relative;
+}
+
+.cta-details.no-cursor {
+  cursor: default;
+}
+
+.image-container iframe {
+  width: 100%;
+  height: 100%;
+  border:none;
+  background-color: black;
+}
+
+.vote-box{
+  position: absolute;
+  top: -13px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 20px;
+  padding: 5px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: 900;
+  z-index: 1;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  #movie-list-container {
+    grid-template-columns: 1fr;
+  }
+}

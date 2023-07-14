@@ -1,0 +1,125 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--background-color);
+}
+
+main {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+main {
+  padding: 100px;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  margin-right: 17px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.review{
+  margin-bottom: 20px;
+}
+
+.review-author {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.flex-container_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+.margin-right {
+  margin-right: 10px;
+}
+
+.closeBtn{
+  cursor: pointer;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.closeBtn:hover, .read-more-btn:hover{
+  opacity: .8;
+}
+
+.read-more-btn{
+  float: right;
+  color: var(--secondary-color);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+
+.small-card {
+  width: 100px !important; 
+  height: 150px !important; 
+}
+
+.error-message{
+  position: fixed;
+  bottom: 10px;
+  background: var(--main-color);
+  padding: 20px;
+  color:  var(--text-color);
+  left: 10px;
+}
+
+#cast-section > div{
+  max-width: 150px;
+}
+
+#cast-section img{
+  width: 100%;
+
+}
+
+.section {
+  padding: 20px;
+  background-color: var(--background-color);
+  margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
