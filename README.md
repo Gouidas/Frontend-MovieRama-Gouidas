@@ -66,10 +66,16 @@ To run the application locally, follow these steps:
 3. Install dependencies:
    npm install
 
-4. Start the development server:
+4. Create .env file in root directory, add and save
+   API_KEY=YOUR_API_KEY
+   BASE_URL=https://api.themoviedb.org/3
+   IMAGE_URL=https://image.tmdb.org/t/p/original
+   YOUTUBE_URL=https://www.youtube.com/embed/
+
+5. Start the development server:
    npm start
 
-5. Visit http://localhost:8082/ in a web browser.
+6. Visit http://localhost:8082/ in a web browser.
 
 Note: Since MovieRama is a client-side-only application, it doesn't require a backend server. The data is fetched from The Movie DB (MDB) JSON API directly.
 
