@@ -1,3 +1,4 @@
+// Set up the header container element
 const headerContainerElem = document.getElementById("header-container");
 if (headerContainerElem) {
   headerContainerElem.innerHTML = `

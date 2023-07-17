@@ -1,3 +1,4 @@
+// Function to create a loading screen component
 export function createLoadingScreen() {
   const loadingScreen = document.createElement("div");
   loadingScreen.className = "loading-screen";

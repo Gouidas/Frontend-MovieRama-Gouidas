@@ -2,6 +2,7 @@ import { truncateText } from "../lib/truncateText";
 import { IMAGE_URL } from "../lib/constants";
 import { Actor } from "../types/index";
 
+// Function to create an actor card element
 export const createActorCard = (actor: Actor): HTMLDivElement => {
   const actorCard: HTMLDivElement = document.createElement("div");
   actorCard.innerHTML = `

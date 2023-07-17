@@ -12,6 +12,9 @@ export const getVoteColor = (vote_average: number): string => {
     { limit: 10, color: "#800000" },
   ];
 
+  // Find the vote color based on the vote average
   const color = voteColors.find((item) => vote_average <= item.limit)?.color;
+
+  // Return the color or the last color in the list as a fallback
   return color || voteColors[voteColors.length - 1].color;
 };
